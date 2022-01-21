@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import TablaProducto from "./components/TablaProducto";
+import { useState } from "react";
+import { useEffect } from "react";
+import NavbarBg from "./components/NavbarBg";
 
 function App() {
+  const [productos, setProductos] = useState([]);
+  const [isLogged, setIsLogged] = useState(true);
+
+  const obtenerProductos = () => {
+    fetch("http://localhost:8080/producto/")
+    .then(response => response.json())
+    .then(data => setProductos(data))
+  }
+ useEffect(() => {
+  obtenerProductos() ;
+ }, []);
+ 
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {isLogged && <NavbarBg></NavbarBg>}
+     
+      <TablaProducto listaProductos={productos}/>
     </div>
   );
 }
