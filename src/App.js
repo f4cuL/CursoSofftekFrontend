@@ -5,11 +5,13 @@ import NavbarNotLogged from "./components/Navbar/NavbarNotLogged";
 import NavbarLogged from "./components/Navbar/NavbarLogged";
 import NavbarAdmin from "./components/Navbar/NavbarAdmin";
 import NavbarEmpleado from "./components/Navbar/NavbarEmpleado";
+import Login from "./components/Login/Login";
 import {
   BrowserRouter,
   Routes,
   Route
 } from "react-router-dom";
+import Registrar from "./components/Login/Registrar";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -43,10 +45,11 @@ function App() {
 
         <Routes>
           <Route path="/" element={<TablaProducto listaProductos={productos}/>} />
-          <Route path="/login" element={<hi>Login</hi>} />
+          <Route path="/login" element={<Login></Login>} />
           <Route path="/carrito" element={<hi>Carrito</hi>} />
           <Route path="/gestion" element={<hi>Gestion</hi>} />
           <Route path="/panel" element={<hi>Panel</hi>} />
+          <Route path="/registrar" element={<Registrar/>} />
         </Routes>
       </BrowserRouter>
     </div>

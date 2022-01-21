@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const NavbarAdmin = () => {
     return <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-            <a className="navbar-brand" href="/#">Bienvenido admin!</a>
+            <a className="navbar-brand" href="/#">¡Bienvenido admin!</a>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
