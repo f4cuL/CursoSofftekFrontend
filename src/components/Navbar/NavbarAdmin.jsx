@@ -15,7 +15,7 @@ const NavbarAdmin = () => {
                         <NavLink to="/" className="nav-link" activeClassName="active"> Home </NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink to="/login" className="nav-link" activeClassName="active"> Panel </NavLink>
+                        <NavLink to="/panel" className="nav-link" activeClassName="active"> Panel </NavLink>
                     </li>
                 </ul>
             </div>

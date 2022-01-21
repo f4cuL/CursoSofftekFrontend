@@ -3,6 +3,8 @@ import { useState } from 'react';
 
 const Registrar = () => {
     const [valueTipo, setValueTipo] = useState(0);
+    const [inputUsuario, setInputUsuario] = useState("");
+    const [inputPassword, setInputPassword] = useState("");
     const [valueDni, setValueDni] = useState("");
     const [formControlDni, setFormControlDni] = useState("form-control");
     const handleDni = (dni) => {
@@ -18,7 +20,6 @@ const Registrar = () => {
             setFormControlDni("form-control is-valid");
         }
     }
-
     return <div className="d-flex justify-content-center">
         <form className='rounded border border-dark p-4 m-4'>
             <div class="form-row">
@@ -31,9 +32,15 @@ const Registrar = () => {
                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputNombre">Nombre</label>
-                <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" />
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputNombre">Nombre</label>
+                    <input type="text" class="form-control" id="inputNombre" placeholder="Nombre" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputApellido">Apellido</label>
+                    <input type="text" class="form-control" id="inputApellido" placeholder="Apellido" />
+                </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -48,13 +55,15 @@ const Registrar = () => {
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Tipo</label>
-                    <select class="form-control" id="exampleFormControlSelect1" onChange={(e)=>setValueTipo(e.target.value)}>
+                    <select class="form-control" id="exampleFormControlSelect1" onChange={(e) => setValueTipo(e.target.value)}>
                         <option value="0">Particular</option>
                         <option value="1">Empresa</option>
                     </select>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
+            <div className='d-flex justify-content-center'>
+                <button type="button" class="btn btn-primary pl-5 pr-5 disabled" disabled="true">Registrar</button>
+            </div>
         </form>
     </div>;
 };

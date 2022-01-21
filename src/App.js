@@ -26,7 +26,7 @@ function App() {
       .then(data => setProductos(data))
   }
   useEffect(() => {
-    //obtenerProductos();
+    obtenerProductos();
   }, []);
 
 
@@ -34,10 +34,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
 
+        <div className="d-flex">
         <input type="button" value={isLogged} onClick={() => {setIsLogged(!isLogged)}}/> <p>Logged</p>
         <input type="button" value={admin} onClick={() => {setAdmin(!admin)}}/> <p>Admin</p>
         <input type="button" value={empleado} onClick={() => {setEmpleado(!empleado)}}/> <p>Empleado</p>
-
+        </div>
         {!isLogged && <NavbarNotLogged></NavbarNotLogged>}
         {isLogged  && !admin && !empleado && <NavbarLogged></NavbarLogged>}
         {isLogged && admin && <NavbarAdmin></NavbarAdmin>}
