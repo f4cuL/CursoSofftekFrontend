@@ -2,7 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 
 const TablaProducto = ({listaProductos}) => {
-
+    const listaFiltrada =  listaProductos.filter((producto)=>producto.stock>0);
+    console.log(listaFiltrada)
     return (
         <div className='container p-0 border border-dark rounded'>
             <form>
@@ -18,12 +19,12 @@ const TablaProducto = ({listaProductos}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {listaProductos.map((producto, index) =>
+                    {listaFiltrada.map((producto, index) =>
                         <tr key={index}>
                             <th scope="col">{producto.nombreProducto}</th>
                             <th scope="col">${producto.precioProducto}</th>
                             <th scope="col">{producto.stock}</th>
-                            <th scope="col"><input type="number" min="0" max={producto.stock} step="1" onkeydown="return false" onChange={(input)=>(input.target.value)>producto.stock?input.target.value=0:console.log("Nel")}/></th>
+                            <th scope="col"><input type="number" min="0" max="50" step="1" onkeydown="return false" onChange={(input)=>(input.target.value)>producto.stock?input.target.value=producto.stock:null}/></th>
                             <th scope="col"><button><img src="https://image.flaticon.com/icons/png/512/107/107831.png" alt="" srcset="" width="20px"/></button></th>
                         </tr>)}
 
