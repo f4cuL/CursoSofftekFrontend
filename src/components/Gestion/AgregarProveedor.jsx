@@ -7,14 +7,35 @@ const AgregarProveedor = ({ update }) => {
     const [nombre, setNombre] = useState("");
     const [direccion, setDireccion] = useState("");
     const [cuit, setCuit] = useState("");
+    const [claseNombre, setClaseNombre] = useState("form-control form-control-sm");
+    const [claseDireccion, setClaseDireccion] = useState("form-control form-control-sm");
+    const [claseCuit, setClaseCuit] = useState("form-control form-control-sm");
     const handleButton = () => {
         const proveedor = { nombre, direccion, cuit }
+        if(nombre === ""){
+            setClaseNombre("form-control is-invalid form-control-sm");
+        }else{
+            setClaseNombre("form-control form-control-sm");
+        }
+        if(direccion === ""){
+            setClaseDireccion("form-control is-invalid form-control-sm");
+        }else{
+            setClaseDireccion("form-control form-control-sm");
+        }
+        if(cuit.length !== 11){
+            setClaseCuit("form-control is-invalid form-control-sm");
+        }else{
+            setClaseCuit("form-control form-control-sm");
+        }
         ProveedoresService.agregarProveedor(proveedor).then((response) => {
             if (response.status === 400){
-                alertify.error("Error, datos invalidos")
+                alertify.error("Error, datos invalidos");
             }else{
-                alertify.success("Proveedor agregado")
-                update()
+                alertify.success("Proveedor agregado");
+                update();
+                setNombre("");
+                setDireccion("");
+                setCuit("");
             }
         })
     }
@@ -24,16 +45,24 @@ const AgregarProveedor = ({ update }) => {
             <form >
                 <div class="form-group">
                     <label for="inputNombre">Nombre de proveedor</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Nombre" id='inputNombre' value={nombre} onChange={(input) => setNombre(input.target.value)} />
-
+                    <input class={claseNombre} type="text" placeholder="Nombre" id='inputNombre' value={nombre} onChange={(input) => setNombre(input.target.value)} />
+                    <div class="invalid-feedback">
+                        La dirección no puede estar vacia
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="direccion">Dirección</label>
-                    <input class="form-control form-control-sm" type="text" placeholder="Dirección" id='direccion' value={direccion} onChange={(input) => setDireccion(input.target.value)} />
+                    <input class={claseDireccion} type="text" placeholder="Dirección" id='direccion' value={direccion} onChange={(input) => setDireccion(input.target.value)} />
+                    <div class="invalid-feedback">
+                        La dirección no puede estar vacia
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="cuit">Cuit</label>
-                    <input class="form-control form-control-sm" type="number" placeholder="Cuit" id='cuit' value={cuit} onChange={(input) => setCuit(input.target.value)} />
+                    <input class={claseCuit} type="number" placeholder="Cuit" id='cuit' value={cuit} onChange={(input) => setCuit(input.target.value)} />
+                    <div class="invalid-feedback">
+                        El Cuit no puede ser menor o mayor a 11
+                    </div>
                 </div>
             </form>
             <input type="button" className='btn btn-dark mb-2' value="Agregar" onClick={handleButton} />

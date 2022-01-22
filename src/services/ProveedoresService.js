@@ -1,4 +1,3 @@
-import AgregarProveedor from "../components/Gestion/AgregarProveedor";
 
 const ProveedoresService = {
     async obtenerProveedores() {

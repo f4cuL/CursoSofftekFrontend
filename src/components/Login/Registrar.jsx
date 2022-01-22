@@ -22,7 +22,7 @@ const Registrar = () => {
     const inputsSet = [setInputUsuario, setInputPassword, setInputNombre, setInputApellido, setInputRazon];
     const setters = [setClaseUsuario, setclasePassword, setclaseNombre, setClaseApellido, setClaseRazon];
     const handleError400 = () => {
-        if (valueDni == "" || valueDni.length < 8) {
+        if (valueDni === "" || valueDni.length < 8) {
             setFormControlDni("form-control is-invalid");
         }
         alertify.error('Verifica los datos nuevamente');
@@ -116,7 +116,7 @@ const Registrar = () => {
                     <input type="number" class={formControlDni} id="inputDni" value={valueDni}
                         onChange={(input) => handleDni(input.target.value)} />
                     <div class="invalid-feedback">
-                        El dni no ser menor o mayor a 8
+                        El dni no debe ser menor o mayor a 8
                     </div>
                 </div>
                 <div class="form-group">
