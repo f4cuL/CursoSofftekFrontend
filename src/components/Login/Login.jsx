@@ -14,7 +14,7 @@ const Login = () => {
                 </div>
                 <Link to="/registrar"><small id="emailHelp" class="form-text text-muted mb-2">¿No tienes cuenta? Presiona aqui para registrar.</small></Link>
                 <div className='d-flex justify-content-center'>
-                <input type="button" className='btn btn-primary' value="Iniciar sesión" />
+                <input type="button" className='btn btn-primary' value="Iniciar sesión" disabled="true" />
                 </div>
             </form>
     </div>;

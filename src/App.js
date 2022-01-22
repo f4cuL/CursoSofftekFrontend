@@ -12,6 +12,8 @@ import {
   Route
 } from "react-router-dom";
 import Registrar from "./components/Login/Registrar";
+import Gestion from "./components/Gestion/Gestion";
+import productosService from "./services/ProductosService";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -21,9 +23,7 @@ function App() {
   const [empleado, setEmpleado] = useState(false);
 
   const obtenerProductos = () => {
-    fetch("http://localhost:8080/producto/")
-      .then(response => response.json())
-      .then(data => setProductos(data))
+    productosService.obtenerProductos().then((data)=>setProductos(data));
   }
   useEffect(() => {
     obtenerProductos();
@@ -48,7 +48,7 @@ function App() {
           <Route path="/" element={<TablaProducto listaProductos={productos}/>} />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/carrito" element={<hi>Carrito</hi>} />
-          <Route path="/gestion" element={<hi>Gestion</hi>} />
+          <Route path="/gestion" element={<Gestion></Gestion>} />
           <Route path="/panel" element={<hi>Panel</hi>} />
           <Route path="/registrar" element={<Registrar/>} />
         </Routes>
