@@ -3,6 +3,7 @@ import { useState } from 'react';
 import ProveedoresService from '../../services/ProveedoresService';
 import alertify from 'alertifyjs';
 import 'alertifyjs/build/css/alertify.css';
+import AgregarProveedor from './AgregarProveedor';
 
 const TablaProveedores = () => {
     const [proveedores, setProveedores] = useState([]);
@@ -16,7 +17,7 @@ const TablaProveedores = () => {
             
     }
     return <div>
-        <h1>Hola</h1>
+        <AgregarProveedor update={actualizarProveedores}></AgregarProveedor>
         <table class="table table-striped">
             <thead>
                 <tr>
