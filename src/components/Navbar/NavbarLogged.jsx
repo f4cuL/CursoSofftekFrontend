@@ -6,7 +6,7 @@ const NavbarLogged = () => {
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
-        <Link className="navbar-brand" to="/home">
+        <Link className="navbar-brand" to="/">
           ¡Bienvenido!
         </Link>
         <button

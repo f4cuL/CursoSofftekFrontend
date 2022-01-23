@@ -4,20 +4,23 @@ import { useEffect } from "react";
 import { useState } from "react";
 import ProveedoresService from "../../services/ProveedoresService";
 import TablaProductosProveedor from "./TablaProductosProveedor";
+import AgregarProductoAProveedor from "./AgregarProductoAProveedor";
 
 const GestionProveedores = () => {
   const location = useLocation();
   const [productos, setProductos] = useState({ listaProductos: [] });
   const id = location.state;
-
-  useEffect(() => {
+  const updateProductos = () => {
     ProveedoresService.obtenerProveedorPorID(id).then((response) =>
       response.json().then((data) => setProductos(data))
     );
+  };
+  useEffect(() => {
+    updateProductos();
   }, []);
 
   return (
-    <div>
+    <div className="container mt-5">
       <table className="table table-hover table-dark">
         <tbody>
           <tr>
@@ -27,7 +30,14 @@ const GestionProveedores = () => {
           </tr>
         </tbody>
       </table>
-      <TablaProductosProveedor productos={productos}></TablaProductosProveedor>
+      <AgregarProductoAProveedor
+        idProveedor={id}
+        update={updateProductos}
+      ></AgregarProductoAProveedor>
+      <TablaProductosProveedor
+        productos={productos}
+        update={updateProductos}
+      ></TablaProductosProveedor>
     </div>
   );
 };

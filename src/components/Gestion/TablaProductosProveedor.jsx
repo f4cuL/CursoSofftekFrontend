@@ -1,7 +1,23 @@
 import React from "react";
+import alertify from "alertifyjs";
+import productosService from "../../services/ProductosService";
 
-const TablaProductosProveedor = ({ productos }) => {
-  console.log(productos.listaProductos);
+const TablaProductosProveedor = ({ productos, update }) => {
+  const handleButtonDelete = (id) => {
+    alertify.confirm(
+      "¿Estas seguro?",
+      "Se eliminará el producto",
+      function () {
+        productosService.borrarProducto(id).then(() => {
+          alertify.success("Producto eliminado");
+          update();
+        });
+      },
+      function () {
+        alertify.error("Cancelado");
+      }
+    );
+  };
   return (
     <div className="container">
       <table class="table table-striped">
@@ -32,6 +48,7 @@ const TablaProductosProveedor = ({ productos }) => {
                     src="https://www.pngrepo.com/download/79440/delete-button.png"
                     height="20px"
                     alt="borrar"
+                    onClick={() => handleButtonDelete(producto.id)}
                   />
                 </button>
               </td>
