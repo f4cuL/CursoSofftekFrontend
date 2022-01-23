@@ -63,8 +63,8 @@ const TablaProveedores = () => {
           </tr>
         </thead>
         <tbody>
-          {proveedores.map((prov, index) => (
-            <tr key={index}>
+          {proveedores.map((prov) => (
+            <tr key={prov.id}>
               <td>{prov.nombre}</td>
               <td>{prov.direccion}</td>
               <td>{prov.cuit}</td>
