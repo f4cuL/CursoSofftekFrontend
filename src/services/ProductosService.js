@@ -10,6 +10,18 @@ const productosService = {
     });
     return await response.json();
   },
+  async editarProducto(id, data) {
+    const url = "http://localhost:8080/producto/" + id;
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  },
   async borrarProducto(id) {
     const url = "http://localhost:8080/producto/" + id;
     const response = await fetch(url, {

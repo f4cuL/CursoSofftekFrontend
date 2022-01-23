@@ -9,7 +9,6 @@ const AgregarProductoAProveedor = ({ idProveedor, update }) => {
       precioProducto: inputPrecio,
       stock: inputStock,
     };
-    console.log(producto);
     productosService.agregarProducto(producto, idProveedor).then((response) => {
       if (response.status == 400) {
         alertify.error("ERROR");

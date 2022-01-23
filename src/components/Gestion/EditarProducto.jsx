@@ -1,33 +1,48 @@
 import alertify from "alertifyjs";
 import React from "react";
 import { useState } from "react";
-import ProveedoresService from "../../services/ProveedoresService";
 import { useEffect } from "react";
+import productosService from "../../services/ProductosService";
 
-const EditarProveedor = ({ proveedorEditar, update }) => {
-  const [nombre, setNombre] = useState(proveedorEditar.nombre);
-  const [direccion, setDireccion] = useState("");
-  const [cuit, setCuit] = useState("");
-  const handleChanges = () => {
-    const proveedor = { nombre, direccion, cuit };
-    ProveedoresService.editarProveedor(proveedor, proveedorEditar.id).then(
-      (response) => {
+const EditarProducto = ({ productoEditar, update }) => {
+  const [nombre, setNombre] = useState(productoEditar.nombreProducto);
+  const [precio, setPrecio] = useState(productoEditar.precioProducto);
+  const [stock, setStock] = useState(productoEditar.stock);
+
+  useEffect(() => {
+    setNombre(productoEditar.nombreProducto);
+    setPrecio(productoEditar.precioProducto);
+    setStock(productoEditar.stock);
+  }, [
+    productoEditar.nombreProducto,
+    productoEditar.precioProducto,
+    productoEditar.stock,
+  ]);
+
+  const handleEditar = () => {
+    const productoEditado = {
+      nombreProducto: nombre,
+      precioProducto: precio,
+      stock,
+    };
+    console.log(productoEditado);
+    productosService
+      .editarProducto(productoEditar.id, productoEditado)
+      .then((response) => {
         if (response.status === 400) {
-          alertify.error("Error");
+          alertify.error("ERROR");
+          setNombre("");
+          setPrecio("");
+          setStock("");
         } else {
+          alertify.success("Editado");
           update();
           setNombre("");
-          setDireccion("");
-          setCuit("");
+          setPrecio("");
+          setStock("");
         }
-      }
-    );
+      });
   };
-  useEffect(() => {
-    setNombre(proveedorEditar.nombre);
-    setDireccion(proveedorEditar.direccion);
-    setCuit(proveedorEditar.cuit);
-  }, [proveedorEditar.nombre, proveedorEditar.direccion, proveedorEditar.cuit]);
 
   return (
     <div>
@@ -43,7 +58,7 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLongTitle">
-                Modificar proveedor
+                Modificar producto
               </h5>
               <button
                 type="button"
@@ -65,21 +80,21 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
                     value={nombre}
                     onChange={(input) => setNombre(input.target.value)}
                   />
-                  <label for="direccion">Direccion</label>
+                  <label for="precio">Precio</label>
                   <input
                     class="form-control form-control-sm mb-1"
                     type="text"
-                    id="direccion"
-                    value={direccion}
-                    onChange={(input) => setDireccion(input.target.value)}
+                    id="precio"
+                    value={precio}
+                    onChange={(input) => setPrecio(input.target.value)}
                   />
-                  <label for="cuit">CUIT</label>
+                  <label for="stock">Stock</label>
                   <input
                     class="form-control form-control-sm mb-1"
                     type="text"
-                    id="cuit"
-                    value={cuit}
-                    onChange={(input) => setCuit(input.target.value)}
+                    id="stock"
+                    value={stock}
+                    onChange={(input) => setStock(input.target.value)}
                   />
                 </div>
               </form>
@@ -89,11 +104,6 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
                 type="button"
                 class="btn btn-secondary"
                 data-dismiss="modal"
-                onClick={() => {
-                  setNombre("");
-                  setDireccion("");
-                  setCuit("");
-                }}
               >
                 Cerrar
               </button>
@@ -101,7 +111,7 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
                 type="button"
                 class="btn btn-dark"
                 data-dismiss="modal"
-                onClick={handleChanges}
+                onClick={handleEditar}
               >
                 Guardar cambios
               </button>
@@ -113,4 +123,4 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
   );
 };
 
-export default EditarProveedor;
+export default EditarProducto;
