@@ -6,7 +6,7 @@ const Gestion = () => {
         <table class="table table-hover table-dark">
             <tbody>
                 <tr>
-                    <td className='d-flex justify-content-center' onClick={()=>console.log("Hola")}>Gestionar proveedores</td>
+                    <td className='d-flex justify-content-center'>Gestionar proveedores</td>
                 </tr>
             </tbody>
         </table>

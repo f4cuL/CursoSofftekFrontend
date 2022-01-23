@@ -33,6 +33,29 @@ const ProveedoresService = {
             body: JSON.stringify(data)
         });
         return await response;
+    },
+    async editarProveedor(data,id) {
+        const url = "http://localhost:8080/proveedor/"+id;
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return await response;
+    },
+    async obtenerProveedorPorID(id) {
+        const url = "http://localhost:8080/proveedor/"+id;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        });
+        return await response;
     }
 }
 
