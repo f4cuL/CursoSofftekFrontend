@@ -28,7 +28,6 @@ const EditarProducto = ({ productoEditar, update, number }) => {
     productosService
       .editarProducto(productoEditar.id, productoEditado)
       .then((response) => {
-        console.log(response.status);
         if (response.status === 500) {
           alertify.error("ERROR");
           setNombre("");
