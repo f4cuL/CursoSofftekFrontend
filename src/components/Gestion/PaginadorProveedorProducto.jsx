@@ -1,5 +1,6 @@
-import React from "react";
-const PaginadorProveedor = ({ pagination, update, number }) => {
+import React, { useEffect } from "react";
+
+const PaginadorProveedorProducto = ({ pagination, number, update }) => {
   return (
     <div>
       <nav aria-label="Page navigation example">
@@ -23,4 +24,4 @@ const PaginadorProveedor = ({ pagination, update, number }) => {
   );
 };
 
-export default PaginadorProveedor;
+export default PaginadorProveedorProducto;

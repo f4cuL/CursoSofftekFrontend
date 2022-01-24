@@ -68,6 +68,18 @@ const ProveedoresService = {
     });
     return await response;
   },
+  async obtenerProductoProveedorPorIDPaginated(id, page) {
+    const url = "http://localhost:8080/proveedor/" + id + "/producto/" + page;
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  },
 };
 
 export default ProveedoresService;

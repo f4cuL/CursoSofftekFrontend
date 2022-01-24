@@ -74,10 +74,10 @@ const TablaProveedores = () => {
         <tbody>
           {proveedores.map((prov) => (
             <tr key={prov.id}>
-              <td>{prov.nombre}</td>
-              <td>{prov.direccion}</td>
-              <td>{prov.cuit}</td>
-              <td>
+              <td className="w-25">{prov.nombre}</td>
+              <td className="w-25">{prov.direccion}</td>
+              <td className="w-25">{prov.cuit}</td>
+              <td className="w-25">
                 <button onClick={() => handleButtonDelete(prov.id)}>
                   <img
                     src="https://www.pngrepo.com/download/79440/delete-button.png"

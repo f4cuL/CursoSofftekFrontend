@@ -2,7 +2,7 @@ import alertify from "alertifyjs";
 import React, { useState } from "react";
 import productosService from "../../services/ProductosService";
 
-const AgregarProductoAProveedor = ({ idProveedor, update }) => {
+const AgregarProductoAProveedor = ({ idProveedor, update, number }) => {
   const handleClickAgregar = () => {
     const producto = {
       nombreProducto: inputNombre,
@@ -13,7 +13,7 @@ const AgregarProductoAProveedor = ({ idProveedor, update }) => {
       if (response.status == 400) {
         alertify.error("ERROR");
       } else {
-        update();
+        update(number);
         setInputNombre("");
         setInputPrecio("");
         setInputStock("");

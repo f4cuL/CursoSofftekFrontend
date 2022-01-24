@@ -3,8 +3,15 @@ import alertify from "alertifyjs";
 import productosService from "../../services/ProductosService";
 import EditarProducto from "./EditarProducto";
 import { useState } from "react";
+import PaginadorProveedorProducto from "./PaginadorProveedorProducto";
 
-const TablaProductosProveedor = ({ productos, update }) => {
+const TablaProductosProveedor = ({
+  productos,
+  update,
+  number,
+  pagination,
+  numero,
+}) => {
   const handleButtonDelete = (id) => {
     alertify.confirm(
       "¿Estas seguro?",
@@ -12,7 +19,7 @@ const TablaProductosProveedor = ({ productos, update }) => {
       function () {
         productosService.borrarProducto(id).then(() => {
           alertify.success("Producto eliminado");
-          update();
+          update(numero);
         });
       },
       function () {
@@ -29,6 +36,7 @@ const TablaProductosProveedor = ({ productos, update }) => {
       <EditarProducto
         productoEditar={producto}
         update={update}
+        number={numero}
       ></EditarProducto>
       <div className="container">
         <table class="table table-striped">
@@ -41,12 +49,12 @@ const TablaProductosProveedor = ({ productos, update }) => {
             </tr>
           </thead>
           <tbody>
-            {productos.listaProductos.map((producto) => (
+            {productos.map((producto) => (
               <tr key={producto.id}>
-                <td>{producto.nombreProducto}</td>
-                <td>{producto.precioProducto}</td>
-                <td>{producto.stock}</td>
-                <td>
+                <td className="w-25">{producto.nombreProducto}</td>
+                <td className="w-25">{producto.precioProducto}</td>
+                <td className="w-25">{producto.stock}</td>
+                <td className="w-25">
                   <button onClick={() => handleButtonDelete(producto.id)}>
                     <img
                       src="https://www.pngrepo.com/download/79440/delete-button.png"
@@ -70,6 +78,11 @@ const TablaProductosProveedor = ({ productos, update }) => {
             ))}
           </tbody>
         </table>
+        <PaginadorProveedorProducto
+          pagination={pagination}
+          number={number}
+          update={update}
+        ></PaginadorProveedorProducto>
       </div>
     </div>
   );

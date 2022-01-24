@@ -9,15 +9,26 @@ import PaginadorProveedor from "./PaginadorProveedor";
 
 const GestionProveedores = () => {
   const location = useLocation();
-  const [productos, setProductos] = useState({ listaProductos: [] });
+  const [productos, setProductos] = useState([]);
+  const [pagination, setPagination] = useState([]);
+  const [number, setNumber] = useState(0);
   const id = location.state;
   const updateProductos = () => {
     ProveedoresService.obtenerProveedorPorID(id).then((response) =>
       response.json().then((data) => setProductos(data))
     );
   };
+  const updateProductosPage = (number) => {
+    ProveedoresService.obtenerProductoProveedorPorIDPaginated(id, number).then(
+      (data) => {
+        setProductos(data.content);
+        setPagination(data);
+      }
+    );
+  };
   useEffect(() => {
-    updateProductos();
+    //updateProductos();
+    updateProductosPage(0);
   }, []);
 
   return (
@@ -33,11 +44,15 @@ const GestionProveedores = () => {
       </table>
       <AgregarProductoAProveedor
         idProveedor={id}
-        update={updateProductos}
+        update={updateProductosPage}
+        number={number}
       ></AgregarProductoAProveedor>
       <TablaProductosProveedor
         productos={productos}
-        update={updateProductos}
+        pagination={pagination}
+        update={updateProductosPage}
+        number={setNumber}
+        numero={number}
       ></TablaProductosProveedor>
     </div>
   );

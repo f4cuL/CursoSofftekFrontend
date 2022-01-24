@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import productosService from "../../services/ProductosService";
 
-const EditarProducto = ({ productoEditar, update }) => {
+const EditarProducto = ({ productoEditar, update, number }) => {
   const [nombre, setNombre] = useState(productoEditar.nombreProducto);
   const [precio, setPrecio] = useState(productoEditar.precioProducto);
   const [stock, setStock] = useState(productoEditar.stock);
@@ -25,10 +25,10 @@ const EditarProducto = ({ productoEditar, update }) => {
       precioProducto: precio,
       stock,
     };
-    console.log(productoEditado);
     productosService
       .editarProducto(productoEditar.id, productoEditado)
       .then((response) => {
+        console.log(response.status);
         if (response.status === 500) {
           alertify.error("ERROR");
           setNombre("");
@@ -40,7 +40,7 @@ const EditarProducto = ({ productoEditar, update }) => {
           setStock("");
           alertify.success("Editado");
         }
-        update();
+        update(number);
       });
   };
 

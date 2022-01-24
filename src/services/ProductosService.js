@@ -31,7 +31,7 @@ const productosService = {
         "Content-Type": "application/json",
       },
     });
-    return await response.json();
+    return await response;
   },
   async agregarProducto(data, id) {
     const url = `http://localhost:8080/proveedor/${id}/producto`;
