@@ -4,7 +4,7 @@ import { useState } from "react";
 import ProveedoresService from "../../services/ProveedoresService";
 import { useEffect } from "react";
 
-const EditarProveedor = ({ proveedorEditar, update }) => {
+const EditarProveedor = ({ proveedorEditar, update, number }) => {
   const [nombre, setNombre] = useState(proveedorEditar.nombre);
   const [direccion, setDireccion] = useState("");
   const [cuit, setCuit] = useState("");
@@ -15,10 +15,11 @@ const EditarProveedor = ({ proveedorEditar, update }) => {
         if (response.status === 400) {
           alertify.error("Error");
         } else {
-          update();
+          update(number);
           setNombre("");
           setDireccion("");
           setCuit("");
+          alertify.success("Editado");
         }
       }
     );

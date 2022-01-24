@@ -20,7 +20,7 @@ const productosService = {
       },
       body: JSON.stringify(data),
     });
-    return await response.json();
+    return await response;
   },
   async borrarProducto(id) {
     const url = "http://localhost:8080/producto/" + id;

@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProveedoresService from "../../services/ProveedoresService";
 import TablaProductosProveedor from "./TablaProductosProveedor";
 import AgregarProductoAProveedor from "./AgregarProductoAProveedor";
+import PaginadorProveedor from "./PaginadorProveedor";
 
 const GestionProveedores = () => {
   const location = useLocation();

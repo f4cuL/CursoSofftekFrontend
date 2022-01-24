@@ -29,18 +29,18 @@ const EditarProducto = ({ productoEditar, update }) => {
     productosService
       .editarProducto(productoEditar.id, productoEditado)
       .then((response) => {
-        if (response.status === 400) {
+        if (response.status === 500) {
           alertify.error("ERROR");
           setNombre("");
           setPrecio("");
           setStock("");
-        } else {
-          alertify.success("Editado");
-          update();
+        } else if (response.status === 200) {
           setNombre("");
           setPrecio("");
           setStock("");
+          alertify.success("Editado");
         }
+        update();
       });
   };
 

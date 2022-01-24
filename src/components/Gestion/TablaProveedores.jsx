@@ -6,14 +6,19 @@ import "alertifyjs/build/css/alertify.css";
 import AgregarProveedor from "./AgregarProveedor";
 import EditarProveedor from "./EditarProveedor";
 import { Link } from "react-router-dom";
+import PaginadorProveedor from "./PaginadorProveedor";
 
 const TablaProveedores = () => {
   const MY_ROUTE = "/gestion/proveedor/:id";
   const [proveedores, setProveedores] = useState([]);
-  const actualizarProveedores = () =>
-    ProveedoresService.obtenerProveedores().then((proveedoresFetch) =>
-      setProveedores(proveedoresFetch)
-    );
+  const [pagination, setPagination] = useState([]);
+  const [number, setNumber] = useState(0);
+  const obtenerProveedoresPag = (number) =>
+    ProveedoresService.obtenerProveedoresPag(number).then((data) => {
+      setProveedores(data.content);
+      setPagination(data);
+    });
+
   const [proveedorEdit, setProveedorEdit] = useState({
     nombre: "",
     direccion: "",
@@ -21,7 +26,7 @@ const TablaProveedores = () => {
     id: "",
   });
   useEffect(() => {
-    actualizarProveedores();
+    obtenerProveedoresPag(0);
   }, []);
   const handleButtonDelete = (id) => {
     alertify.confirm(
@@ -30,7 +35,7 @@ const TablaProveedores = () => {
       function () {
         alertify.success("Proveedor eliminado");
         ProveedoresService.borrarProveedor(id).then(() =>
-          actualizarProveedores()
+          obtenerProveedoresPag(number)
         );
       },
       function () {
@@ -49,10 +54,14 @@ const TablaProveedores = () => {
   return (
     <div>
       <EditarProveedor
-        update={actualizarProveedores}
+        update={obtenerProveedoresPag}
+        number={number}
         proveedorEditar={proveedorEdit}
       ></EditarProveedor>
-      <AgregarProveedor update={actualizarProveedores}></AgregarProveedor>
+      <AgregarProveedor
+        update={obtenerProveedoresPag}
+        number={number}
+      ></AgregarProveedor>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -101,6 +110,11 @@ const TablaProveedores = () => {
           ))}
         </tbody>
       </table>
+      <PaginadorProveedor
+        pagination={pagination}
+        update={obtenerProveedoresPag}
+        number={setNumber}
+      ></PaginadorProveedor>
     </div>
   );
 };
