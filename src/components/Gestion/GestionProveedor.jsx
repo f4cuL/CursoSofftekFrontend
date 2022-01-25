@@ -5,6 +5,7 @@ import { useState } from "react";
 import ProveedoresService from "../../services/ProveedoresService";
 import TablaProductosProveedor from "./TablaProductosProveedor";
 import AgregarProductoAProveedor from "./AgregarProductoAProveedor";
+import TablaProveedorCategorias from "./TablaProveedorCategorias";
 
 const GestionProveedores = () => {
   const location = useLocation();
@@ -28,6 +29,16 @@ const GestionProveedores = () => {
 
   return (
     <div className="container mt-5">
+      <table class="table table-hover table-dark">
+        <tbody>
+          <tr>
+            <td className="d-flex justify-content-center">
+              Gestionar Categorias
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <TablaProveedorCategorias idProveedor={id} />
       <table className="table table-hover table-dark">
         <tbody>
           <tr>

@@ -101,7 +101,7 @@ const TablaProveedores = () => {
                 <Link to={MY_ROUTE.replace(":id", prov.id)} state={prov.id}>
                   <input
                     type="button"
-                    value="Productos"
+                    value="Gestionar proveedor"
                     className="btn btn-dark"
                   />
                 </Link>

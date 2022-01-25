@@ -1,5 +1,4 @@
 import React from "react";
-import PaginadorProveedor from "./PaginadorProveedor";
 import TablaProveedores from "./TablaProveedores";
 
 const Gestion = () => {
@@ -18,9 +17,7 @@ const Gestion = () => {
       <table class="table table-hover table-dark">
         <tbody>
           <tr>
-            <td className="d-flex justify-content-center">
-              Gestionar promociones
-            </td>
+            <td className="d-flex justify-content-center">Gestionar ordenes</td>
           </tr>
         </tbody>
       </table>

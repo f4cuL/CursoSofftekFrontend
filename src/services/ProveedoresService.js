@@ -80,6 +80,33 @@ const ProveedoresService = {
     const data = await response.json();
     return data;
   },
+  async obtenerCategoriasPorIdProveedor(id) {
+    const url = "http://localhost:8080/proveedor/" + id + "/categoria";
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    return data;
+  },
+  async eliminarCategoriaDeProveedor(idProveedor, idCategoria) {
+    const url =
+      "http://localhost:8080/proveedor/" +
+      idProveedor +
+      "/categoria/" +
+      idCategoria;
+    const response = await fetch(url, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return await response;
+  },
 };
 
 export default ProveedoresService;
