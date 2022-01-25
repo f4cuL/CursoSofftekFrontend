@@ -6,11 +6,26 @@ import alertify from "alertifyjs";
 
 const TablaProveedorCategorias = ({ idProveedor }) => {
   const [categorias, setCategorias] = useState([]);
+  const [allCategorias, setAllCategorias] = useState([]);
+  const [seleccion, setSeleccion] = useState("");
   const actualizarCategorias = () => {
     ProveedoresService.obtenerCategoriasPorIdProveedor(idProveedor).then(
       (data) => setCategorias(data)
     );
   };
+
+  const obtenerCategorias = () => {
+    ProveedoresService.obtenerCategorias().then((data) =>
+      data.json().then((data) => setAllCategorias(data))
+    );
+  };
+
+  const handleAgregar = () => {
+    ProveedoresService.agregarCategoriaAProveedor(idProveedor, seleccion).then(
+      () => actualizarCategorias()
+    );
+  };
+
   const handleDelete = (idCategoria) => {
     alertify.confirm(
       "Se quitara la categoria seleccionada",
@@ -31,10 +46,25 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
 
   useEffect(() => {
     actualizarCategorias();
+    obtenerCategorias();
   }, []);
 
   return (
     <div>
+      <select
+        onChange={(input) => setSeleccion(input.target.value)}
+        class="form-select form-select-lg mb-2"
+        aria-label=".form-select-sm example"
+      >
+        {allCategorias.map((cat) => (
+          <option key={cat.id} value={cat.id}>
+            {cat.nombreCategoria}
+          </option>
+        ))}
+      </select>
+      <button className="btn-sm btn-dark p-0 ml-2" onClick={handleAgregar}>
+        Agregar
+      </button>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -44,7 +74,7 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
         </thead>
         <tbody>
           {categorias.map((categoria) => (
-            <tr>
+            <tr key={categoria.id}>
               <td className="w-90">{categoria.nombreCategoria}</td>
               <td className="w-10">
                 <button onClick={() => handleDelete(categoria.id)}>

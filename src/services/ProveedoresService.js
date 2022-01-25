@@ -107,6 +107,32 @@ const ProveedoresService = {
     });
     return await response;
   },
+  async obtenerCategorias() {
+    const url = "http://localhost:8080/categoria/";
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return await response;
+  },
+  async agregarCategoriaAProveedor(idProveedor, idCategoria) {
+    const url =
+      "http://localhost:8080/proveedor/" +
+      idProveedor +
+      "/categoria/" +
+      idCategoria;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return await response;
+  },
 };
 
 export default ProveedoresService;
