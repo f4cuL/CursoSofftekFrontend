@@ -11,19 +11,26 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Registrar from "./components/Login/Registrar";
 import Gestion from "./components/Gestion/Gestion";
 import productosService from "./services/ProductosService";
+import PaginadorProductos from "./components/PaginadorProductos";
 
 function App() {
   const [productos, setProductos] = useState([]);
-
+  const [number, setNumber] = useState(0);
   const [isLogged, setIsLogged] = useState(false);
   const [admin, setAdmin] = useState(false);
   const [empleado, setEmpleado] = useState(false);
+  const [pagination, setPagination] = useState({});
 
-  const obtenerProductos = () => {
-    productosService.obtenerProductos().then((data) => setProductos(data));
+  const obtenerProductosPage = (num) => {
+    productosService.obtenerProductosPage(num).then((response) =>
+      response.json().then((data) => {
+        setPagination(data);
+        setProductos(data.content);
+      })
+    );
   };
   useEffect(() => {
-    obtenerProductos();
+    obtenerProductosPage(0);
   }, []);
 
   return (
@@ -63,7 +70,16 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<TablaProducto listaProductos={productos} />}
+            element={
+              <div>
+                <TablaProducto listaProductos={productos} />
+                <PaginadorProductos
+                  update={obtenerProductosPage}
+                  pagination={pagination}
+                  setNumber={setNumber}
+                ></PaginadorProductos>
+              </div>
+            }
           />
           <Route path="/login" element={<Login></Login>} />
           <Route path="/carrito" element={<hi>Carrito</hi>} />

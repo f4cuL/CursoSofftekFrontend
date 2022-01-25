@@ -45,6 +45,17 @@ const productosService = {
     });
     return await response.json();
   },
+  async obtenerProductosPage(page) {
+    const url = "http://localhost:8080/producto/page/" + page;
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    return await response;
+  },
 };
 
 export default productosService;

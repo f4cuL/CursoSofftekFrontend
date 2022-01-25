@@ -62,7 +62,7 @@ const TablaProveedores = () => {
         update={obtenerProveedoresPag}
         number={number}
       ></AgregarProveedor>
-      <table class="table table-striped">
+      <table class="table table-striped container-fluid">
         <thead>
           <tr>
             <th scope="col">Nombre</th>
@@ -75,7 +75,7 @@ const TablaProveedores = () => {
           {proveedores.map((prov) => (
             <tr key={prov.id}>
               <td className="w-25">{prov.nombre}</td>
-              <td className="w-25">{prov.direccion}</td>
+              <td className="w-25"> {prov.direccion}</td>
               <td className="w-25">{prov.cuit}</td>
               <td className="w-25">
                 <button onClick={() => handleButtonDelete(prov.id)}>
@@ -96,13 +96,11 @@ const TablaProveedores = () => {
                     alt="editar"
                   />
                 </button>
-              </td>
-              <td>
                 <Link to={MY_ROUTE.replace(":id", prov.id)} state={prov.id}>
                   <input
                     type="button"
-                    value="Gestionar proveedor"
-                    className="btn btn-dark"
+                    value="Gestionar"
+                    className="btn-sm btn-dark m-1"
                   />
                 </Link>
               </td>

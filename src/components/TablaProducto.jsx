@@ -1,4 +1,5 @@
 import React from "react";
+import PaginadorProductos from "./PaginadorProductos";
 
 const TablaProducto = ({ listaProductos }) => {
   const listaFiltrada = listaProductos.filter((producto) => producto.stock > 0);
@@ -18,9 +19,9 @@ const TablaProducto = ({ listaProductos }) => {
         <tbody>
           {listaFiltrada.map((producto, index) => (
             <tr key={producto.id}>
-              <td>{producto.nombreProducto}</td>
-              <td>${producto.precioProducto}</td>
-              <td>{producto.stock}</td>
+              <td className="w-25">{producto.nombreProducto}</td>
+              <td className="w-25">${producto.precioProducto}</td>
+              <td className="w-25">{producto.stock}</td>
               <th>
                 <input
                   type="number"
