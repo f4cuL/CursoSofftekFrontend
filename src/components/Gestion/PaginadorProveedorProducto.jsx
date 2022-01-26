@@ -1,6 +1,6 @@
 const PaginadorProveedorProducto = ({ pagination, number, update }) => {
   return (
-    <div>
+    <div className="pb-1">
       <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
           {Array.from({ length: pagination.totalPages }).map((v, index) => (

@@ -62,7 +62,7 @@ const TablaProveedores = () => {
         update={obtenerProveedoresPag}
         number={number}
       ></AgregarProveedor>
-      <table class="table table-striped container-fluid">
+      <table class="table table-striped container-fluid mb-0">
         <thead>
           <tr>
             <th scope="col">Nombre</th>

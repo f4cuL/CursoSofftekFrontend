@@ -29,6 +29,7 @@ function App() {
     for (let i = 0; i < listaProducto.length; i++) {
       if (listaProducto[i].id === prod.id) {
         found = true;
+        alertify.error("Ya tienes este artículo en el carrito");
       }
     }
     if (prod.stock === undefined || prod.stock === "0" || prod.stock < 0) {
@@ -36,6 +37,7 @@ function App() {
     }
     if (!found && prod.stock !== undefined && prod.stock > 0) {
       setListaProducto([...listaProducto, prod]);
+      alertify.success("Agregado al carrito");
     }
   };
   const obtenerProductosPage = (num) => {

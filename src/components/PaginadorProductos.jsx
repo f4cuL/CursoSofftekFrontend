@@ -1,7 +1,7 @@
 import React from "react";
 const PaginadorProductos = ({ pagination, setNumber, update }) => {
   return (
-    <div>
+    <div className="mt-1">
       <div>
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">

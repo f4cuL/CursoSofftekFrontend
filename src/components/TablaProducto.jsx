@@ -5,7 +5,7 @@ const TablaProducto = ({ listaProductos, agregarProducto }) => {
   return (
     <div className="container p-0 mt-2 bg-light border border-dark">
       <form></form>
-      <table className="table table-striped">
+      <table className="table table-striped mb-0">
         <thead className="thead-dark">
           <tr>
             <th scope="col">Nombre</th>
