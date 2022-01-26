@@ -26,12 +26,9 @@ function App() {
 
   const agregarProducto = (prod) => {
     let found = false;
-    console.log(prod);
     for (let i = 0; i < listaProducto.length; i++) {
       if (listaProducto[i].id === prod.id) {
         found = true;
-        console.log(prod.id);
-        console.log(listaProducto[i].id);
       }
     }
     if (prod.stock === undefined || prod.stock === "0" || prod.stock < 0) {
@@ -54,12 +51,8 @@ function App() {
   }, []);
 
   const quitar = (id) => {
-    console.log(id);
     for (let i = 0; i < listaProducto.length; i++) {
       if (listaProducto[i].id === id) {
-        console.log(id);
-        console.log(listaProducto[i].id);
-        console.log(i);
         const nuevaLista = listaProducto.filter((data) => data.id !== id);
         setListaProducto(nuevaLista);
       }

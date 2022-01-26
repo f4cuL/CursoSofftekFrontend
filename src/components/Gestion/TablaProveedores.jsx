@@ -52,7 +52,7 @@ const TablaProveedores = () => {
     setProveedorEdit(proovedorSelec);
   };
   return (
-    <div>
+    <div className="bg-white">
       <EditarProveedor
         update={obtenerProveedoresPag}
         number={number}

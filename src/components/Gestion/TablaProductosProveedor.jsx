@@ -32,7 +32,7 @@ const TablaProductosProveedor = ({
     setProducto(prod);
   };
   return (
-    <div>
+    <div className="bg-white">
       <EditarProducto
         productoEditar={producto}
         update={update}

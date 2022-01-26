@@ -6,9 +6,9 @@ const PaginadorProductos = ({ pagination, setNumber, update }) => {
         <nav aria-label="Page navigation example">
           <ul class="pagination justify-content-center">
             {Array.from({ length: pagination.totalPages }).map((v, index) => (
-              <li class="page-item" key={index}>
+              <li class="page-item " key={index}>
                 <a
-                  class="page-link"
+                  class="page-link border border-dark"
                   onClick={() => {
                     setNumber(index);
                     update(index);

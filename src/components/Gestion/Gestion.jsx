@@ -4,10 +4,10 @@ import TablaProveedores from "./TablaProveedores";
 const Gestion = () => {
   return (
     <div className="container mt-5">
-      <table class="table table-hover table-dark">
+      <table class="table table-hover table-dark mb-0">
         <tbody>
           <tr>
-            <td className="d-flex justify-content-center">
+            <td className="d-flex justify-content-center mb-0">
               Gestionar proveedores
             </td>
           </tr>

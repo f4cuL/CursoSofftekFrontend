@@ -29,7 +29,7 @@ const GestionProveedores = () => {
 
   return (
     <div className="container mt-5">
-      <table class="table table-hover table-dark">
+      <table class="table table-hover table-dark mb-0">
         <tbody>
           <tr>
             <td className="d-flex justify-content-center">
@@ -39,7 +39,7 @@ const GestionProveedores = () => {
         </tbody>
       </table>
       <TablaProveedorCategorias idProveedor={id} />
-      <table className="table table-hover table-dark">
+      <table className="table table-hover table-dark mb-0">
         <tbody>
           <tr>
             <td className="d-flex justify-content-center">

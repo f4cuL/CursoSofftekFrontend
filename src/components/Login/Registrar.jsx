@@ -90,7 +90,7 @@ const Registrar = () => {
   };
   return (
     <div className="d-flex justify-content-center">
-      <form className="rounded border border-dark p-4 m-4">
+      <form className="rounded border border-dark p-4 m-4 bg-white">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputUsuario">Usuario</label>

@@ -25,7 +25,7 @@ const AgregarProductoAProveedor = ({ idProveedor, update, number }) => {
   const [inputStock, setInputStock] = useState("");
   return (
     <div>
-      <div className="container border border-dark pt-2">
+      <div className="container border border-dark pt-2 bg-white">
         <button
           className="mb-2"
           data-toggle="collapse"

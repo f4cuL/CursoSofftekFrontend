@@ -50,10 +50,10 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container bg-white">
       <select
         onChange={(input) => setSeleccion(input.target.value)}
-        class="form-select form-select-lg mb-2"
+        class="form-select form-select-lg m-3"
         aria-label=".form-select-sm example"
       >
         {allCategorias.map((cat) => (
@@ -62,7 +62,7 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
           </option>
         ))}
       </select>
-      <button className="btn-sm btn-dark p-0 ml-2" onClick={handleAgregar}>
+      <button className="btn-sm btn-dark p-1 ml-2" onClick={handleAgregar}>
         Agregar
       </button>
       <table class="table table-striped">

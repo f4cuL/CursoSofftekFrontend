@@ -6,7 +6,7 @@ const PaginadorProveedorProducto = ({ pagination, number, update }) => {
           {Array.from({ length: pagination.totalPages }).map((v, index) => (
             <li class="page-item" key={index}>
               <a
-                class="page-link"
+                class="page-link border border-dark"
                 onClick={() => {
                   update(index);
                   number(index);
