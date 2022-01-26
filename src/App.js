@@ -12,6 +12,8 @@ import Registrar from "./components/Login/Registrar";
 import Gestion from "./components/Gestion/Gestion";
 import productosService from "./services/ProductosService";
 import PaginadorProductos from "./components/PaginadorProductos";
+import Carrito from "./components/Carrito";
+import alertify from "alertifyjs";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -20,7 +22,25 @@ function App() {
   const [admin, setAdmin] = useState(false);
   const [empleado, setEmpleado] = useState(false);
   const [pagination, setPagination] = useState({});
+  const [listaProducto, setListaProducto] = useState([]);
 
+  const agregarProducto = (prod) => {
+    let found = false;
+    console.log(prod);
+    for (let i = 0; i < listaProducto.length; i++) {
+      if (listaProducto[i].id === prod.id) {
+        found = true;
+        console.log(prod.id);
+        console.log(listaProducto[i].id);
+      }
+    }
+    if (prod.stock === undefined || prod.stock === "0" || prod.stock < 0) {
+      alertify.error("Error, el producto no puede ser 0 o vacio");
+    }
+    if (!found && prod.stock !== undefined && prod.stock > 0) {
+      setListaProducto([...listaProducto, prod]);
+    }
+  };
   const obtenerProductosPage = (num) => {
     productosService.obtenerProductosPage(num).then((response) =>
       response.json().then((data) => {
@@ -32,6 +52,19 @@ function App() {
   useEffect(() => {
     obtenerProductosPage(0);
   }, []);
+
+  const quitar = (id) => {
+    console.log(id);
+    for (let i = 0; i < listaProducto.length; i++) {
+      if (listaProducto[i].id === id) {
+        console.log(id);
+        console.log(listaProducto[i].id);
+        console.log(i);
+        const nuevaLista = listaProducto.filter((data) => data.id !== id);
+        setListaProducto(nuevaLista);
+      }
+    }
+  };
 
   return (
     <div className="App">
@@ -72,7 +105,10 @@ function App() {
             path="/"
             element={
               <div>
-                <TablaProducto listaProductos={productos} />
+                <TablaProducto
+                  listaProductos={productos}
+                  agregarProducto={agregarProducto}
+                />
                 <PaginadorProductos
                   update={obtenerProductosPage}
                   pagination={pagination}
@@ -82,7 +118,12 @@ function App() {
             }
           />
           <Route path="/login" element={<Login></Login>} />
-          <Route path="/carrito" element={<hi>Carrito</hi>} />
+          <Route
+            path="/carrito"
+            element={
+              <Carrito listaProductos={listaProducto} quitar={quitar}></Carrito>
+            }
+          />
           <Route path="/gestion" element={<Gestion></Gestion>} />
           <Route path="/panel" element={<hi>Panel</hi>} />
           <Route path="/registrar" element={<Registrar />} />

@@ -1,10 +1,9 @@
 import React from "react";
-import PaginadorProductos from "./PaginadorProductos";
 
-const TablaProducto = ({ listaProductos }) => {
+const TablaProducto = ({ listaProductos, agregarProducto }) => {
   const listaFiltrada = listaProductos.filter((producto) => producto.stock > 0);
   return (
-    <div className="container p-0 border border-dark rounded">
+    <div className="container p-0 mt-2">
       <form></form>
       <table className="table">
         <thead className="thead-dark">
@@ -25,19 +24,33 @@ const TablaProducto = ({ listaProductos }) => {
               <th>
                 <input
                   type="number"
-                  min="0"
+                  min="1"
                   max="50"
                   step="1"
                   onkeydown="return false"
-                  onChange={(input) =>
-                    input.target.value > producto.stock
-                      ? (input.target.value = producto.stock)
-                      : null
-                  }
+                  onChange={(input) => {
+                    if (input.target.value > producto.stock) {
+                      input.target.value = producto.stock;
+                      producto.totalStock = producto.stock;
+                    } else if (input.target.value < 0) {
+                      input.target.value = 1;
+                    } else {
+                      producto.totalStock = input.target.value;
+                    }
+                  }}
                 />
               </th>
               <th>
-                <button>
+                <button
+                  onClick={() =>
+                    agregarProducto({
+                      id: producto.id,
+                      nombreProducto: producto.nombreProducto,
+                      precioProducto: producto.precioProducto,
+                      stock: producto.totalStock,
+                    })
+                  }
+                >
                   <img
                     src="https://image.flaticon.com/icons/png/512/107/107831.png"
                     alt="carrito"
