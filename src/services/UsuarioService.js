@@ -1,4 +1,4 @@
-let urlHeroku = process.env.REACT_APP_URL;
+let urlHeroku = "https://retail-facu-sofftek-backend.herokuapp.com";
 const UsuarioService = {
   async registrarUsuario(datos) {
     const url = "http://localhost:8080/usuario/registrar";
