@@ -15,7 +15,6 @@ const TablaProveedores = () => {
   const [number, setNumber] = useState(0);
   const obtenerProveedoresPag = (number) =>
     ProveedoresService.obtenerProveedoresPag(number).then((data) => {
-      console.log(data);
       setProveedores(data.content);
       setPagination(data);
     });

@@ -15,6 +15,7 @@ import PaginadorProductos from "./components/PaginadorProductos";
 import Carrito from "./components/Carrito";
 import alertify from "alertifyjs";
 import GestionCliente from "./components/GestionCliente";
+import jwt_decode from "jwt-decode";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -53,6 +54,11 @@ function App() {
     obtenerProductosPage(0);
     if (localStorage.token !== undefined) {
       setIsLogged(true);
+      let decoded = jwt_decode(localStorage.token);
+      console.log(decoded);
+      if (decoded.sub == "EMPLEADO") {
+        setEmpleado(true);
+      }
     }
   }, []);
 

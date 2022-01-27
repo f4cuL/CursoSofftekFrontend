@@ -1,7 +1,6 @@
 import React from "react";
 
 const TablaProducto = ({ listaProductos, agregarProducto }) => {
-  console.log(listaProductos);
   return (
     <div className="container p-0 mt-2 bg-white border border-dark">
       <form></form>
