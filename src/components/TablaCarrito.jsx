@@ -35,13 +35,7 @@ const TablaCarrito = ({
             <h1 class="fs-1 flex-column">El carrito está vacio</h1>
           </div>
           <div className="d-flex justify-content-center">
-            <img
-              className="d-flex justify-content-center"
-              src="http://cdn.onlinewebfonts.com/svg/img_133483.png"
-              alt="warning"
-              height="80px"
-              srcset=""
-            />
+            DEBES COLOCAR ITEMS EN EL CARRITO
           </div>
         </div>
       ) : (
