@@ -2,7 +2,7 @@ let urlHeroku = process.env.REACT_APP_URL;
 const ProveedoresService = {
   async obtenerProveedores() {
     const url = "http://localhost:8080/proveedor";
-    const response = await fetch(url || urlHeroku + "/proveedor", {
+    const response = await fetch(urlHeroku + "/proveedor" || url, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -14,7 +14,7 @@ const ProveedoresService = {
   async obtenerProveedoresPag(pagina) {
     const url = "http://localhost:8080/proveedor/page/" + pagina;
     const response = await fetch(
-      url || urlHeroku + "/proveedor/page" + pagina,
+      urlHeroku + "/proveedor/page" + pagina || url,
       {
         method: "GET",
         headers: {
@@ -29,7 +29,7 @@ const ProveedoresService = {
   },
   async borrarProveedor(id) {
     const url = "http://localhost:8080/proveedor/" + id;
-    const response = await fetch(url || urlHeroku + "/proveedor/" + id, {
+    const response = await fetch(urlHeroku + "/proveedor/" + id || url, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -40,7 +40,7 @@ const ProveedoresService = {
   },
   async agregarProveedor(data) {
     const url = "http://localhost:8080/proveedor";
-    const response = await fetch(url || urlHeroku + "/proveedor", {
+    const response = await fetch(urlHeroku + "/proveedor" || url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -53,7 +53,7 @@ const ProveedoresService = {
   },
   async editarProveedor(data, id) {
     const url = "http://localhost:8080/proveedor/" + id;
-    const response = await fetch(url || urlHeroku + "/proveedor/" + id, {
+    const response = await fetch(urlHeroku + "/proveedor/" + id || url, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -66,7 +66,7 @@ const ProveedoresService = {
   },
   async obtenerProveedorPorID(id) {
     const url = "http://localhost:8080/proveedor/" + id;
-    const response = await fetch(url || urlHeroku + "/proveedor/" + id, {
+    const response = await fetch(urlHeroku + "/proveedor/" + id || url, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -78,7 +78,7 @@ const ProveedoresService = {
   async obtenerProductoProveedorPorIDPaginated(id, page) {
     const url = "http://localhost:8080/proveedor/" + id + "/producto/" + page;
     const response = await fetch(
-      url || urlHeroku + "/proveedor/" + id + "/producto/" + page,
+      urlHeroku + "/proveedor/" + id + "/producto/" + page || url,
       {
         method: "GET",
         headers: {
@@ -93,7 +93,7 @@ const ProveedoresService = {
   async obtenerCategoriasPorIdProveedor(id) {
     const url = "http://localhost:8080/proveedor/" + id + "/categoria";
     const response = await fetch(
-      url || urlHeroku + "/proveedor/" + id + "/categoria",
+      urlHeroku + "/proveedor/" + id + "/categoria" || url,
       {
         method: "GET",
         headers: {
@@ -112,8 +112,8 @@ const ProveedoresService = {
       "/categoria/" +
       idCategoria;
     const response = await fetch(
-      url ||
-        urlHeroku + "/proveedor/" + idProveedor + "/categoria/" + idCategoria,
+      urlHeroku + "/proveedor/" + idProveedor + "/categoria/" + idCategoria ||
+        url,
       {
         method: "DELETE",
         headers: {
@@ -126,7 +126,7 @@ const ProveedoresService = {
   },
   async obtenerCategorias() {
     const url = "http://localhost:8080/categoria/";
-    const response = await fetch(url || urlHeroku + "/categoria", {
+    const response = await fetch(urlHeroku + "/categoria" || url, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -143,8 +143,8 @@ const ProveedoresService = {
       "/categoria/" +
       idCategoria;
     const response = await fetch(
-      url ||
-        urlHeroku + "proveedor/" + idProveedor + "/categoria/" + idCategoria,
+      urlHeroku + "proveedor/" + idProveedor + "/categoria/" + idCategoria ||
+        url,
       {
         method: "POST",
         headers: {

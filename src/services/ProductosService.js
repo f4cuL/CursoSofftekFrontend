@@ -2,7 +2,7 @@ let urlHeroku = process.env.REACT_APP_URL;
 const productosService = {
   async obtenerProductos() {
     const url = "http://localhost:8080/producto";
-    const response = await fetch(url || urlHeroku + "/producto", {
+    const response = await fetch(urlHeroku + "/producto" || url, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -13,7 +13,7 @@ const productosService = {
   },
   async editarProducto(id, data) {
     const url = "http://localhost:8080/producto/" + id;
-    const response = await fetch(url || urlHeroku + "/producto", {
+    const response = await fetch(urlHeroku + "/producto" || url, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -25,7 +25,7 @@ const productosService = {
   },
   async borrarProducto(id) {
     const url = "http://localhost:8080/producto/" + id;
-    const response = await fetch(url || urlHeroku + "/producto/" + id, {
+    const response = await fetch(urlHeroku + "/producto/" + id || url, {
       method: "DELETE",
       headers: {
         Accept: "application/json",
@@ -37,7 +37,7 @@ const productosService = {
   async agregarProducto(data, id) {
     const url = `http://localhost:8080/proveedor/${id}/producto`;
     const response = await fetch(
-      url || urlHeroku + "/proveedor/" + id + "/producto",
+      urlHeroku + "/proveedor/" + id + "/producto" || url,
       {
         method: "POST",
         headers: {
@@ -51,7 +51,7 @@ const productosService = {
   },
   async obtenerProductosPage(page) {
     const url = "http://localhost:8080/producto/page/" + page;
-    const response = await fetch(url || urlHeroku + "/producto/page/" + page, {
+    const response = await fetch(urlHeroku + "/producto/page/" + page || url, {
       method: "GET",
       headers: {
         Accept: "application/json",

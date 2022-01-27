@@ -2,7 +2,7 @@ let urlHeroku = process.env.REACT_APP_URL;
 const UsuarioService = {
   async registrarUsuario(datos) {
     const url = "http://localhost:8080/usuario/registrar";
-    const response = await fetch(url || urlHeroku + "/usuario/registrar", {
+    const response = await fetch(urlHeroku + "/usuario/registrar" || url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -14,7 +14,7 @@ const UsuarioService = {
   },
   async iniciarSesion(datos) {
     const url = "http://localhost:8080/usuario/login";
-    const response = await fetch(url || urlHeroku + "/usuario/login", {
+    const response = await fetch(urlHeroku + "/usuario/login" || url, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -26,7 +26,7 @@ const UsuarioService = {
   },
   async crearCarrito(datos) {
     const url = "http://localhost:8080/cliente/checkout";
-    const response = await fetch(url || urlHeroku + "/cliente/checkout", {
+    const response = await fetch(urlHeroku + "/cliente/checkout" || url, {
       method: "POST",
       headers: {
         Accept: "application/json",
