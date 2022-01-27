@@ -27,15 +27,7 @@ const NavbarNotLogged = () => {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink
-                to="/login"
-                className="nav-link"
-                activeClassName="active"
-              >
-                Login
-              </NavLink>
-            </li>
+
             <li class="nav-item">
               <NavLink
                 to="/carrito"
@@ -43,6 +35,15 @@ const NavbarNotLogged = () => {
                 activeClassName="active"
               >
                 Carrito
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/login"
+                className="nav-link"
+                activeClassName="active"
+              >
+                Login
               </NavLink>
             </li>
           </ul>
