@@ -15,7 +15,7 @@ const ProveedoresService = {
   async obtenerProveedoresPag(pagina) {
     const url = "http://localhost:8080/proveedor/page/" + pagina;
     const response = await fetch(
-      urlHeroku + "/proveedor/page" + pagina || url,
+      urlHeroku + "/proveedor/page/" + pagina || url,
       {
         method: "GET",
         headers: {
