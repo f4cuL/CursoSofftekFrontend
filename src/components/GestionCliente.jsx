@@ -55,26 +55,24 @@ const GestionCliente = () => {
       >
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <button onClick={() => console.log(listaProductos)}>
-              <table class="table table-striped">
-                <thead>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Cantidad</th>
+                  <th scope="col">PrecioUnitario</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaProductos.map((detalle) => (
                   <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">PrecioUnitario</th>
+                    <td>{detalle.producto.nombreProducto}</td>
+                    <td>{detalle.cantidad}</td>
+                    <td>${detalle.precioVentaUnitario}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {listaProductos.map((detalle) => (
-                    <tr>
-                      <td>{detalle.producto.nombreProducto}</td>
-                      <td>{detalle.cantidad}</td>
-                      <td>${detalle.precioVentaUnitario}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </button>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
