@@ -1,8 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import alertify from "alertifyjs";
+import { useNavigate } from "react-router-dom";
 
-const NavbarAdmin = () => {
+const NavbarAdmin = ({ setIsLogged, setEmpleado }) => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -36,6 +40,19 @@ const NavbarAdmin = () => {
                 Gestion
               </NavLink>
             </li>
+            <a
+              className="nav-link"
+              activeClassName="active"
+              onClick={() => {
+                localStorage.removeItem("token");
+                alertify.alert("Aviso", "Se ha cerrado la sesión");
+                setIsLogged(false);
+                setEmpleado(false);
+                navigate("/");
+              }}
+            >
+              Logout
+            </a>
           </ul>
         </div>
       </nav>

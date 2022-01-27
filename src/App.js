@@ -51,6 +51,9 @@ function App() {
   };
   useEffect(() => {
     obtenerProductosPage(0);
+    if (localStorage.token !== undefined) {
+      setIsLogged(true);
+    }
   }, []);
 
   const quitar = (id) => {
@@ -93,9 +96,16 @@ function App() {
           <p>Empleado</p>
         </div>
         {!isLogged && <NavbarNotLogged></NavbarNotLogged>}
-        {isLogged && !admin && !empleado && <NavbarLogged></NavbarLogged>}
+        {isLogged && !admin && !empleado && (
+          <NavbarLogged setIsLogged={setIsLogged}></NavbarLogged>
+        )}
         {isLogged && admin && <NavbarAdmin></NavbarAdmin>}
-        {isLogged && empleado && <NavbarEmpleado></NavbarEmpleado>}
+        {isLogged && empleado && (
+          <NavbarEmpleado
+            setIsLogged={setIsLogged}
+            setEmpleado={setEmpleado}
+          ></NavbarEmpleado>
+        )}
 
         <Routes>
           <Route
@@ -114,7 +124,15 @@ function App() {
               </div>
             }
           />
-          <Route path="/login" element={<Login></Login>} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                setIsLogged={setIsLogged}
+                setEmpleado={setEmpleado}
+              ></Login>
+            }
+          />
           <Route
             path="/carrito"
             element={

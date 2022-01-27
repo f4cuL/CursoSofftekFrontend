@@ -1,6 +1,7 @@
 import alertify from "alertifyjs";
 import React from "react";
 import UsuarioService from "../services/UsuarioService";
+import { useNavigate } from "react-router-dom";
 
 const TablaCarrito = ({
   listaProductos,
@@ -12,11 +13,18 @@ const TablaCarrito = ({
   const handleDelete = (id) => {
     quitar(id);
   };
+  const navigate = useNavigate();
   const handleComprar = () => {
-    UsuarioService.crearCarrito(listaProductos).then(() => {
-      alertify.success("Compra realizada con éxito");
-      setListaProducto([]);
-      update(number);
+    UsuarioService.crearCarrito(listaProductos).then((data) => {
+      if (data.status === 500) {
+        alertify.error("Debes iniciar sesión para realizar la compra");
+        navigate("/login");
+      } else {
+        alertify.success("Compra realizada con éxito");
+        setListaProducto([]);
+        navigate("/");
+        update(number);
+      }
     });
   };
   return (

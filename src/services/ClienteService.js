@@ -6,6 +6,7 @@ const ClienteService = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
     });
     return await response;

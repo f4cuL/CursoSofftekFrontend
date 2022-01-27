@@ -24,12 +24,13 @@ const UsuarioService = {
     return response;
   },
   async crearCarrito(datos) {
-    const url = "http://localhost:8080/cliente/31/checkout";
+    const url = "http://localhost:8080/cliente/checkout";
     const response = await fetch(url, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
       body: JSON.stringify(datos),
     });

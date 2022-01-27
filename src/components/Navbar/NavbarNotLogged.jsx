@@ -24,8 +24,7 @@ const NavbarNotLogged = () => {
           <ul className="navbar-nav">
             <li className="nav-item">
               <NavLink to="/" className="nav-link" activeClassName="active">
-                {" "}
-                Home{" "}
+                Home
               </NavLink>
             </li>
             <li className="nav-item">
@@ -34,8 +33,16 @@ const NavbarNotLogged = () => {
                 className="nav-link"
                 activeClassName="active"
               >
-                {" "}
-                Login{" "}
+                Login
+              </NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink
+                to="/carrito"
+                className="nav-link"
+                activeClassName="active"
+              >
+                Carrito
               </NavLink>
             </li>
           </ul>

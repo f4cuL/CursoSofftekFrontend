@@ -32,8 +32,8 @@ const TablaClientes = () => {
         </thead>
         <tbody>
           {clientes.map((cli) => (
-            <tr>
-              <td className="w-25">{cli.nombreUsuario}</td>
+            <tr key={cli.id}>
+              <td className="w-25">{cli.username}</td>
               <td className="w-25">{cli.listaOrdenes.length}</td>
               <td className="w-25">
                 <Link

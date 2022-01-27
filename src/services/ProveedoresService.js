@@ -17,6 +17,7 @@ const ProveedoresService = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
     });
     const data = await response.json();
@@ -114,6 +115,7 @@ const ProveedoresService = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
     });
     return await response;

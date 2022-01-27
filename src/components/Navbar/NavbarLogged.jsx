@@ -1,8 +1,11 @@
+import alertify from "alertifyjs";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const NavbarLogged = () => {
+const NavbarLogged = ({ setIsLogged }) => {
+  const navigate = useNavigate();
   return (
     <div>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -36,6 +39,18 @@ const NavbarLogged = () => {
                 Carrito
               </NavLink>
             </li>
+            <a
+              className="nav-link"
+              activeClassName="active"
+              onClick={() => {
+                localStorage.removeItem("token");
+                alertify.alert("Aviso", "Se ha cerrado la sesión");
+                setIsLogged(false);
+                navigate("/");
+              }}
+            >
+              Logout
+            </a>
           </ul>
         </div>
       </nav>

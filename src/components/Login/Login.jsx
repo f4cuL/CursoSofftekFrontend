@@ -1,28 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import UsuarioService from "../../services/UsuarioService";
 import alertify from "alertifyjs";
+import jwt_decode from "jwt-decode";
 
-const Login = () => {
+const Login = ({ setIsLogged, setEmpleado }) => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState({});
+  const navigate = useNavigate();
   const iniciarSesion = () => {
     const usuarioInputs = {
-      nombreUsuario: usuario,
+      username: usuario,
       password: password,
     };
     UsuarioService.iniciarSesion(usuarioInputs).then((response) => {
       if (response.status === 400) {
-        alertify.error("No puedes dejar valores vacios");
+        alertify.error("Error");
       } else {
-        response.json().then((data) => {
-          setData(data);
-          if (data.nombreUsuario === "ERROR" || data.password === "ERROR") {
-            alertify.error("Datos invalidos");
+        response.text().then((data) => {
+          if (data == "ERROR") {
+            alertify.error("No existe ese usuario");
+          } else if (data === "BADPASSWORD") {
+            alertify.error("Contraseña erronea");
           } else {
-            alertify.success("Iniciaste sesión");
+            alertify.success("Loggeado con éxito");
+            localStorage.token = data;
+            setIsLogged(true);
+            let decoded = jwt_decode(localStorage.token);
+            if (decoded.sub == "EMPLEADO") {
+              setEmpleado(true);
+            }
+            navigate("/");
           }
         });
       }
