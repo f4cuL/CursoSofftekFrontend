@@ -1,4 +1,5 @@
 import React from "react";
+import TablaClientes from "./TablaClientes";
 import TablaProveedores from "./TablaProveedores";
 
 const Gestion = () => {
@@ -14,13 +15,14 @@ const Gestion = () => {
         </tbody>
       </table>
       <TablaProveedores />
-      <table class="table table-hover table-dark">
+      <table class="table table-hover table-dark mb-0">
         <tbody>
           <tr>
             <td className="d-flex justify-content-center">Gestionar ordenes</td>
           </tr>
         </tbody>
       </table>
+      <TablaClientes></TablaClientes>
     </div>
   );
 };

@@ -14,6 +14,7 @@ import productosService from "./services/ProductosService";
 import PaginadorProductos from "./components/PaginadorProductos";
 import Carrito from "./components/Carrito";
 import alertify from "alertifyjs";
+import GestionCliente from "./components/GestionCliente";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -63,6 +64,7 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={() => console.log(productos)}></button>
       <BrowserRouter>
         <div className="d-flex">
           <input
@@ -116,7 +118,13 @@ function App() {
           <Route
             path="/carrito"
             element={
-              <Carrito listaProductos={listaProducto} quitar={quitar}></Carrito>
+              <Carrito
+                listaProductos={listaProducto}
+                quitar={quitar}
+                setListaProducto={setListaProducto}
+                number={number}
+                update={obtenerProductosPage}
+              ></Carrito>
             }
           />
           <Route path="/gestion" element={<Gestion></Gestion>} />
@@ -125,6 +133,10 @@ function App() {
           <Route
             path="/gestion/proveedor/:id"
             element={<GestionProveedores></GestionProveedores>}
+          />
+          <Route
+            path="/cliente/:id"
+            element={<GestionCliente></GestionCliente>}
           />
         </Routes>
       </BrowserRouter>

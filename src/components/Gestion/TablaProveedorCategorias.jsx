@@ -50,7 +50,7 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
   }, []);
 
   return (
-    <div className="container bg-white">
+    <div className="container bg-white pb-2">
       <select
         onChange={(input) => setSeleccion(input.target.value)}
         class="form-select form-select-lg m-3"

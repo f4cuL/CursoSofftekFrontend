@@ -3,7 +3,7 @@ import React from "react";
 const TablaProducto = ({ listaProductos, agregarProducto }) => {
   const listaFiltrada = listaProductos.filter((producto) => producto.stock > 0);
   return (
-    <div className="container p-0 mt-2 bg-light border border-dark">
+    <div className="container p-0 mt-2 bg-white border border-dark">
       <form></form>
       <table className="table table-striped mb-0">
         <thead className="thead-dark">
@@ -16,7 +16,7 @@ const TablaProducto = ({ listaProductos, agregarProducto }) => {
           </tr>
         </thead>
         <tbody>
-          {listaFiltrada.map((producto, index) => (
+          {listaProductos.map((producto, index) => (
             <tr key={producto.id}>
               <td className="w-25">{producto.nombreProducto}</td>
               <td className="w-25">${producto.precioProducto}</td>
