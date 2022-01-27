@@ -1,4 +1,4 @@
-let urlHeroku = process.env.REACT_APP_URL;
+let urlHeroku = "https://retail-facu-sofftek-backend.herokuapp.com/";
 const productosService = {
   async obtenerProductos() {
     const url = "http://localhost:8080/producto";
