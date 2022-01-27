@@ -14,7 +14,7 @@ const productosService = {
   },
   async editarProducto(id, data) {
     const url = "http://localhost:8080/producto/" + id;
-    const response = await fetch(urlHeroku + "/producto" || url, {
+    const response = await fetch(urlHeroku + "/producto/" + id || url, {
       method: "PUT",
       headers: {
         Accept: "application/json",
