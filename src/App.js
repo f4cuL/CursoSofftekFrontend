@@ -67,34 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={() => console.log(productos)}></button>
       <BrowserRouter>
-        <div className="d-flex">
-          <input
-            type="button"
-            value={isLogged}
-            onClick={() => {
-              setIsLogged(!isLogged);
-            }}
-          />
-          <p>Logged</p>
-          <input
-            type="button"
-            value={admin}
-            onClick={() => {
-              setAdmin(!admin);
-            }}
-          />
-          <p>Admin</p>
-          <input
-            type="button"
-            value={empleado}
-            onClick={() => {
-              setEmpleado(!empleado);
-            }}
-          />
-          <p>Empleado</p>
-        </div>
         {!isLogged && <NavbarNotLogged></NavbarNotLogged>}
         {isLogged && !admin && !empleado && (
           <NavbarLogged setIsLogged={setIsLogged}></NavbarLogged>
@@ -130,6 +103,8 @@ function App() {
               <Login
                 setIsLogged={setIsLogged}
                 setEmpleado={setEmpleado}
+                number={number}
+                update={obtenerProductosPage}
               ></Login>
             }
           />

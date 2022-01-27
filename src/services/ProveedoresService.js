@@ -41,6 +41,7 @@ const ProveedoresService = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
       body: JSON.stringify(data),
     });
@@ -53,6 +54,7 @@ const ProveedoresService = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        Authorization: localStorage.token,
       },
       body: JSON.stringify(data),
     });

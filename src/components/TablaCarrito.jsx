@@ -30,9 +30,9 @@ const TablaCarrito = ({
   return (
     <div className="container mt-2">
       {listaProductos.length === 0 ? (
-        <div className="border border-danger rounded p-2 bg-danger">
+        <div className="border border-danger rounded bg-white p-2">
           <div className="d-flex justify-content-center">
-            <h1 class="fs-1 flex-column text-white">El carrito está vacio</h1>
+            <h1 class="fs-1 flex-column">El carrito está vacio</h1>
           </div>
           <div className="d-flex justify-content-center">
             <img

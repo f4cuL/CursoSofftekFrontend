@@ -3,8 +3,10 @@ import { useState } from "react";
 import UsuarioService from "../../services/UsuarioService";
 import alertify from "alertifyjs";
 import "alertifyjs/build/css/alertify.css";
+import { useNavigate } from "react-router-dom";
 
 const Registrar = () => {
+  const navigate = useNavigate();
   const [valueTipo, setValueTipo] = useState(0);
   const [inputUsuario, setInputUsuario] = useState("");
   const [inputPassword, setInputPassword] = useState("");
@@ -54,15 +56,12 @@ const Registrar = () => {
     }
   };
   const registroExitoso = () => {
-    for (let i in inputs) {
-      setters[i]("form-control");
-      inputsSet[i]("");
-    }
     alertify.success("Registrado con éxito");
+    navigate("/login");
   };
   const handleClickRegister = () => {
     const datos = {
-      nombreUsuario: inputUsuario,
+      username: inputUsuario,
       password: inputPassword,
       nombre: inputNombre,
       apellido: inputApellido,

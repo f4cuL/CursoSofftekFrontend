@@ -5,7 +5,7 @@ import UsuarioService from "../../services/UsuarioService";
 import alertify from "alertifyjs";
 import jwt_decode from "jwt-decode";
 
-const Login = ({ setIsLogged, setEmpleado }) => {
+const Login = ({ setIsLogged, setEmpleado, number, update }) => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -31,6 +31,7 @@ const Login = ({ setIsLogged, setEmpleado }) => {
             if (decoded.sub == "EMPLEADO") {
               setEmpleado(true);
             }
+            update(number);
             navigate("/");
           }
         });
