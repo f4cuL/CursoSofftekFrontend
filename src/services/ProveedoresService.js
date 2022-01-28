@@ -144,7 +144,7 @@ const ProveedoresService = {
       "/categoria/" +
       idCategoria;
     const response = await fetch(
-      urlHeroku + "proveedor/" + idProveedor + "/categoria/" + idCategoria ||
+      urlHeroku + "/proveedor/" + idProveedor + "/categoria/" + idCategoria ||
         url,
       {
         method: "POST",
