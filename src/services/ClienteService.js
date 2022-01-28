@@ -1,5 +1,5 @@
-//let urlHeroku = "https://retail-facu-sofftek-backend.herokuapp.com";
-let urlHeroku = "http://localhost:8080";
+let urlHeroku = "https://retail-facu-sofftek-backend.herokuapp.com";
+//let urlHeroku = "http://localhost:8080";
 const ClienteService = {
   async obtenerClientes() {
     const url = "http://localhost:8080/usuario/cliente";

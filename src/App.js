@@ -55,7 +55,6 @@ function App() {
     if (localStorage.token !== undefined) {
       setIsLogged(true);
       let decoded = jwt_decode(localStorage.token);
-      console.log(decoded);
       if (decoded.sub == "EMPLEADO") {
         setEmpleado(true);
       }

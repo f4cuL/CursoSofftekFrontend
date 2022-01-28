@@ -45,7 +45,6 @@ const GestionCliente = () => {
           </tbody>
         </table>
       )}
-
       <div
         class="modal fade bd-example-modal-lg"
         tabindex="-1"
