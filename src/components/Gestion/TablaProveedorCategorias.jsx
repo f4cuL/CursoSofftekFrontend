@@ -56,6 +56,9 @@ const TablaProveedorCategorias = ({ idProveedor }) => {
         class="form-select form-select-lg m-3"
         aria-label=".form-select-sm example"
       >
+        <option selected value="">
+          Elige categoría
+        </option>
         {allCategorias.map((cat) => (
           <option key={cat.id} value={cat.id}>
             {cat.nombreCategoria}

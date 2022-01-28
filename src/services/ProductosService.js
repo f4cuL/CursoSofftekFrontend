@@ -12,6 +12,7 @@ const productosService = {
     });
     return await response.json();
   },
+
   async editarProducto(id, data) {
     const url = "http://localhost:8080/producto/" + id;
     const response = await fetch(urlHeroku + "/producto/" + id || url, {
