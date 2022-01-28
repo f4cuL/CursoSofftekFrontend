@@ -70,7 +70,7 @@ const Registrar = () => {
       tipoCliente: valueTipo,
     };
     UsuarioService.registrarUsuario(datos).then((response) =>
-      response.status === 500 ? handleError400() : registroExitoso()
+      response.status === 400 ? handleError400() : registroExitoso()
     );
   };
 
