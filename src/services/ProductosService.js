@@ -1,4 +1,4 @@
-let urlHeroku = "https://retail-facu-sofftek-backend.herokuapp.com";
+let urlHeroku = "https://retail-sofftek-backend-facu.herokuapp.com";
 //let urlHeroku = "http://localhost:8080";
 const productosService = {
   async obtenerProductos() {
